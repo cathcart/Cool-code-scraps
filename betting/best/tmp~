@@ -1,0 +1,12 @@
+import string
+weights_data=open("data")
+weights=[]
+weight=[0,0,0]
+#store the weights in memory
+for i in weights_data:
+        items=i.split()
+        weight=[string.lower(items[0]),[float(items[-2]),float(items[-1])]]
+        weights.append(weight)
+weights_dictionary=dict(weights)
+print weights_dictionary["MEXICO"]
+

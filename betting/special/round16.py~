@@ -1,0 +1,104 @@
+import group_stages
+import poss
+import match_result
+group_winners=group_stages.elimination()
+
+def winner(teams):
+	match_results=match_result.match_result(teams)
+	if match_results[0]>match_results[1]:
+		return [match_results,teams[0]]
+	if match_results[1]>match_results[0]:
+		return [match_results,teams[1]]
+	if match_results[1]==match_results[0]:
+		#get attach/defense weights
+		weights=match_result.get_weights()
+		if weights[teams[0]][0]>weights[teams[1]][1]:
+			#teams[0] wins in penalty shootout
+			return [match_results,teams[0]]
+		else:
+			return [match_results,teams[1]]
+
+w49=winner([group_winners['GroupA'][0],group_winners['GroupB'][1]])
+print "w49",
+print [group_winners['GroupA'][0],group_winners['GroupB'][1]],"  :",
+print w49
+w50=winner([group_winners['GroupC'][0],group_winners['GroupD'][1]])
+print "w50",
+print [group_winners['GroupC'][0],group_winners['GroupD'][1]],"  :",
+print w50
+w53=winner([group_winners['GroupE'][0],group_winners['GroupF'][1]])
+print "w53",
+print [group_winners['GroupC'][0],group_winners['GroupD'][1]],"  :",
+print w53
+w54=winner([group_winners['GroupG'][0],group_winners['GroupH'][1]])
+print "w54",
+print [group_winners['GroupG'][0],group_winners['GroupH'][1]],"  :",
+print w54
+
+w58=winner([w49[1],w50[1]])
+print "w58",
+print w49[1]," v ",w50[1]," :",
+print w58
+
+w57=winner([w53[1],w54[1]])
+print "w57",
+print w53[1]," v ",w54[1]," :",
+print w57
+
+w61=winner([w58[1],w57[1]])
+print "w61",
+print w58[1]," v ",w57[1]," :",
+print w61
+
+print "L61",
+list=[w58[1],w57[1]]
+list.remove(w61[1])
+L61=list[0]
+print L61
+
+w52=winner([group_winners['GroupB'][0],group_winners['GroupA'][1]])
+print "w52",
+print [group_winners['GroupB'][0],group_winners['GroupA'][1]]," :",
+print w52
+
+w51=winner([group_winners['GroupD'][0],group_winners['GroupC'][1]])
+print "w51",
+print [group_winners['GroupD'][0],group_winners['GroupC'][1]]," :",
+print w51
+
+w55=winner([group_winners['GroupF'][0],group_winners['GroupE'][1]])
+print "w55",
+print [group_winners['GroupF'][0],group_winners['GroupE'][1]]," :",
+print w55
+
+w56=winner([group_winners['GroupH'][0],group_winners['GroupG'][1]])
+print "w66",
+print [group_winners['GroupH'][0],group_winners['GroupG'][1]]," :",
+print w56
+
+w59=winner([w52[1],w51[1]])
+print "w59 ",w52[1]," v ",w51[1]," :",
+print w59
+
+w60=winner([w55[1],w56[1]])
+print "w60",w55[1]," v ",w56[1]," :",
+print w60
+
+w62=winner([w59[1],w60[1]])
+print "w62",w59[1]," v ",w60[1]," :",
+print w62
+print "L62 :",
+list=[w59[1],w60[1]]
+list.remove(w62[1])
+L62=list[0]
+print L62
+
+print "runner ups :",
+print L61," v ",L62," :",
+print winner([L61,L62])
+
+print "final :",
+print w61[1]," v ",w62[1]," :",
+wc_winner=winner([w61[1],w62[1]])
+print wc_winner
+print wc_winner

@@ -1,0 +1,19 @@
+w49 ['france', 'south-korea']   : south-korea
+w50 ['england', 'australia']   : england
+w53 ['england', 'australia']   : netherlands
+w54 ['ivory-coast', 'switzerland']   : ivory-coast
+w58 south-korea  v  england  : south-korea
+w57 netherlands  v  ivory-coast  : netherlands
+w61 south-korea  v  netherlands  : netherlands
+L61 south-korea
+w52 ['nigeria', 'uruguay']  : nigeria
+w51 ['germany', 'slovenia']  : germany
+w55 ['new-zealand', 'cameroon']  : cameroon
+w66 ['spain', 'portugal']  : spain
+w59  nigeria  v  germany  : germany
+w60 cameroon  v  spain  : cameroon
+w62 germany  v  cameroon  : cameroon
+L62 : germany
+runner ups : south-korea  v  germany  : germany
+final : netherlands  v  cameroon  : netherlands
+netherlands
