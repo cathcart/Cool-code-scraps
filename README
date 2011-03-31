@@ -1,0 +1,3 @@
+Repo collecting cool scraps of code
+
+backup.sh-backup script, used with the crontab: 30 23 * * 1-5 sh /home/cathcart/backup.sh
