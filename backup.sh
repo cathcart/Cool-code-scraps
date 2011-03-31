@@ -24,6 +24,7 @@ if [ ! -d $BACKUP_DIRECTORY  ]; then
 fi
 
 # previous-backup source current-backup
-rsync -ac --link-dest=$PREVIOUS_BACKUP $DIRECTORY_TO_BACKUP $TODAYS_BACKUP
+rsync -ac --link-dest=$PREVIOUS_BACKUP $DIRECTORY_TO_BACKUP $TODAYS_BACKUP #this is the std local backup
+rsync -ac --link-dest=$PREVIOUS_BACKUP/londale lonsdale:/home/tsphy/$USER/ $TODAYS_BACKUP/londale #this is the backup for parsons/londale
 
 echo "Successful backup"|mail -s "Successful backup" $EMAIL
