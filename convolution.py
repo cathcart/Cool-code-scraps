@@ -19,7 +19,6 @@ def simpson(f, a, b, n):
         xk = a + i*h
         sp += f(xk)
 
-
     s = 2*sp + 4*si + f(a) + f(b)
 
     return (h/3)*s
@@ -39,7 +38,8 @@ def g(x):
 
 def c(t,tau):
     #return f(tau)*g(t-tau)
-    return math.sin(tau)*math.cos(t-tau)
+    #return math.sin(tau)*math.cos(t-tau)
+    return g(tau)*g(t-tau)
 
 if __name__=="__main__":
     N=10
@@ -48,7 +48,7 @@ if __name__=="__main__":
 #    print sum(values)
 #    print simpson(g,-4,4,200)
 
-    for t in range(-20,50):
+    for t in range(100):
         t=float(t)/10
         def d(x):
             return c(t,x)
