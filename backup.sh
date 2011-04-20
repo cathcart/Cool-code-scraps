@@ -21,10 +21,15 @@ if [ ! -d $BACKUP_DIRECTORY  ]; then
      LAST=`ls -t -l $EMERGENCY_BACKUP|grep ^d|awk '{print $9}'|head -n1`
      TODAYS_BACKUP=$EMERGENCY_BACKUP`date +%a`
      PREVIOUS_BACKUP=$EMERGENCY_BACKUP$LAST
+else
+if scp lonsdale:~/.bashrc /tmp/. >&/dev/null ;then
+rm /tmp/.bashrc
+rsync -ac --link-dest=$PREVIOUS_BACKUP/londale lonsdale:/home/tsphy/$USER/ $TODAYS_BACKUP/londale #this is the backup for parsons/londale
+else
+echo "Lonsdale cannot be reached" | mail -s "Backup issue" $EMAIL
 fi
-
 # previous-backup source current-backup
 rsync -ac --link-dest=$PREVIOUS_BACKUP $DIRECTORY_TO_BACKUP $TODAYS_BACKUP #this is the std local backup
-rsync -ac --link-dest=$PREVIOUS_BACKUP/londale lonsdale:/home/tsphy/$USER/ $TODAYS_BACKUP/londale #this is the backup for parsons/londale
-
 echo "Successful backup"|mail -s "Successful backup" $EMAIL
+fi
+
