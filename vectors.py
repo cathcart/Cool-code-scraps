@@ -10,8 +10,8 @@ class Vector:
     return Vector(data)
   def __len__(self):
     return len(self.data)
-  def __mul__(time,self):
-    return Vector([time*self.data[i] for i in range(len(self.data))])
+  def __rmul__(self,time):
+    return self*time
   def __mul__(self,time):
     return Vector([time*self.data[i] for i in range(len(self.data))])
 
