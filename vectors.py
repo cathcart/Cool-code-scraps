@@ -14,6 +14,9 @@ class Vector:
     return self*time
   def __mul__(self,time):
     return Vector([time*self.data[i] for i in range(len(self.data))])
+  def __getitem__(self,index):
+    return self.data[index]
+
 
 def ans():
 #  vectors=[[3.62500000,-2.39500000,0.00000000],[3.62500000,2.39500000,0.00000000],[0.00000000,0.00000000,9.78000000]]
