@@ -10,4 +10,8 @@ def func_inner(y):
 def int_inner(x):
   return quad(func_inner,0,x)[0]
 
-print quad(lambda x: exp(-2*int_inner(x)),0,inf)[0]
+def inner2(x):
+  return quad(lambda y: (1-exp(-y))/y ,0,x)[0]
+
+print quad (lambda x: exp(-2*quad(lambda y: (1-exp(-y))/y ,0,x)[0]),0,inf)[0]
+#print quad(lambda x: exp(-2*int_inner(x)),0,inf)[0]
