@@ -1,4 +1,4 @@
-Compile with 
+Compile with:\n
 gcc -o final final.c -lslurm
 assuming slurm is in the LD_LIBRARY_PATH
 
