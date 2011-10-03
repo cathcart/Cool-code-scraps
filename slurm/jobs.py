@@ -10,7 +10,7 @@ class JOB:
   def __init__(self,data):
     self.dic={}
     for i in data.split():
-      [item,value]=i.split("=")
+      [item,value]=i.split("=",1)
       self.dic[item]=value
 
   def __getitem__(self,item):
