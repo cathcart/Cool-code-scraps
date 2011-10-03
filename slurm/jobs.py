@@ -53,15 +53,16 @@ class JOB_LIST:
     return job_states
 
   def compile_report(self):
-    report_string="SLURM Report\n"
-    report_string+=time.ctime(time.time())+"\n\n"
+    report_string="SLURM Report\\n"
+    report_string+=time.ctime(time.time())+"\\n\\n"
 
     stats=self.status()
     for key in stats:
-      report_string+="%s: %d" %(key,stats[key])+"\n"
+      report_string+=key+"\\n"
+      report_string+="%s: %d" %(key,stats[key])+"\\n"
     for key in stats:
       for job in self.subset("JobState",key):
-        report_string+="%s %s %s %s"%(job["JobId"],job["Name"],job["WorkDir"],job["Partition"]) +"\n"
+        report_string+="%s %s %s %s"%(job["JobId"],job["Name"],job["WorkDir"],job["Partition"]) +"\\n"
     return report_string
   
 if __name__=="__main__":
