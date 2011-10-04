@@ -77,8 +77,9 @@ class JOB_LIST:
     return report_string
   
 if __name__=="__main__":
+  user_name="YOUR SLURM USER NAME"
 
   slurm_job_list=JOB_LIST(parse_jobs(read_data("tmp")))
-  my_job_list=slurm_job_list.subset("UserId","cathcart")
+  my_job_list=slurm_job_list.subset("UserId",user_name)
   print my_job_list.compile_report()
   my_job_list=JOB_LIST([])

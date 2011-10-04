@@ -1,6 +1,6 @@
 #!/bin/bash
 
-email="cathcart@tcd.ie"
+email="YOUR EMAIL"
 
 #first run the slurm c program
 
