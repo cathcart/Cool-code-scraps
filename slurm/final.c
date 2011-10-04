@@ -13,6 +13,7 @@ int main( int argc, char *argv[]){
  if ( slurm_load_jobs((time_t)NULL,resp,SHOW_ALL)){
    printf("slurm error\n");
    slurm_perror ("slurm_load_jobs error");
+   exit(EXIT_FAILURE);
  }else{
    printf("command ran ok\n");
  }
