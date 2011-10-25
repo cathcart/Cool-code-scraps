@@ -140,4 +140,5 @@ if __name__=="__main__":
   iterations=100
   min_p=Vector([0,0])
   max_p=Vector([2,2])
-  return run(N,iterations,1,min_p,max_p,my_function)[1]
+  number_of_groups=4
+  return run(N,iterations,number_of_groups,min_p,max_p,my_function)[1]
