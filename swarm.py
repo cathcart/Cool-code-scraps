@@ -90,11 +90,13 @@ def run(N,iterations,grouping_N,min_p,max_p,function):
   for iteration in range(iterations):
 
 #    print "%d %f" %(iteration,min_position[0])
-    for particle in swarm:
-      try:
-        particle.set_cost(function(particle.position))
-      except:
-        particle.set_cost(9999)
+    cost_results=map(function,[particle.position for particle in swarm])
+    [swarm[i].set_cost(cost_results[i]) for i in range(len(swarm))]
+#    for particle in swarm:
+#      try:
+#        particle.set_cost(function(particle.position))
+#      except:
+#        particle.set_cost(9999)
 
     #update all the local extrema and decide the new global extrema
     min_position=sorted(swarm,key=lambda x: x.cost)[0].position
@@ -141,4 +143,4 @@ if __name__=="__main__":
   min_p=Vector([0,0])
   max_p=Vector([2,2])
   number_of_groups=4
-  return run(N,iterations,number_of_groups,min_p,max_p,my_function)[1]
+  print run(N,iterations,number_of_groups,min_p,max_p,my_function)[1]
