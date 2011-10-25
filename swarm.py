@@ -1,5 +1,7 @@
 import math
 import random
+import multiprocessing
+
 class Vector:
   def __class__(self):
     return "Vector"
@@ -90,7 +92,8 @@ def run(N,iterations,grouping_N,min_p,max_p,function):
   for iteration in range(iterations):
 
 #    print "%d %f" %(iteration,min_position[0])
-    cost_results=map(function,[particle.position for particle in swarm])
+    p=multiprocessing.Pool(4)
+    cost_results=p.map(function,[particle.position for particle in swarm])
     [swarm[i].set_cost(cost_results[i]) for i in range(len(swarm))]
 #    for particle in swarm:
 #      try:
@@ -138,8 +141,8 @@ def test(parameters):
   return run(N,iterations,1,min_p,max_p,my_function)[0]
 
 if __name__=="__main__":
-  N=20
-  iterations=100
+  N=60
+  iterations=10000
   min_p=Vector([0,0])
   max_p=Vector([2,2])
   number_of_groups=4
